@@ -36,14 +36,14 @@ namespace UI
     
             if(Settings::expandedVisible)
             {
-                RenderOption(Icons::Kenney::Search, "Advanced Search", vec2(int(Settings::windowPosition.x) + 40, int(Settings::windowPosition.y)), vec4(0,0,0,0.9));
-                RenderOption("T", "Random Tech", vec2(int(Settings::windowPosition.x) + 80, int(Settings::windowPosition.y)), vec4(0,0,0,1));
-                RenderOption("D", "Random Dirt", vec2(int(Settings::windowPosition.x) + 120, int(Settings::windowPosition.y)), vec4(132,36,1,0.5));
-                RenderOption("R", "Random RPG", vec2(int(Settings::windowPosition.x) + 160, int(Settings::windowPosition.y)), vec4(0,0,255,0.9));
-                RenderOption("F", "Random FullSpeed",  vec2(int(Settings::windowPosition.x) + 200, int(Settings::windowPosition.y)), vec4(255,0,0,0.9));
-                RenderOption("L", "Random LOL",  vec2(int(Settings::windowPosition.x) + 240, int(Settings::windowPosition.y)), vec4(255,0,60,0.9));
-                RenderOption("P", "Random Plastic",  vec2(int(Settings::windowPosition.x) + 280, int(Settings::windowPosition.y)), vec4(255,255,0,0.9));
-                RenderOption("I", "Random Ice", vec2(int(Settings::windowPosition.x) + 320, int(Settings::windowPosition.y)), vec4(0,153,255,0.9));
+                RenderOption(Icons::Kenney::Search, "Advanced Search", vec2(int(Settings::windowPosition.x) + 45, int(Settings::windowPosition.y)), vec4(0,0,0,0.9));
+                RenderOption("T", "Random Tech", vec2(int(Settings::windowPosition.x) + 90, int(Settings::windowPosition.y)), vec4(0,0,0,1));
+                RenderOption("D", "Random Dirt", vec2(int(Settings::windowPosition.x) + 135, int(Settings::windowPosition.y)), vec4(132,36,1,0.5));
+                RenderOption("R", "Random RPG", vec2(int(Settings::windowPosition.x) + 180, int(Settings::windowPosition.y)), vec4(0,0,255,0.9));
+                RenderOption("F", "Random FullSpeed",  vec2(int(Settings::windowPosition.x) + 225, int(Settings::windowPosition.y)), vec4(255,0,0,0.9));
+                RenderOption("L", "Random LOL",  vec2(int(Settings::windowPosition.x) + 275, int(Settings::windowPosition.y)), vec4(255,0,60,0.9));
+                RenderOption("P", "Random Plastic",  vec2(int(Settings::windowPosition.x) + 320, int(Settings::windowPosition.y)), vec4(255,255,0,0.9));
+                RenderOption("I", "Random Ice", vec2(int(Settings::windowPosition.x) + 365, int(Settings::windowPosition.y)), vec4(0,153,255,0.9));
             }
     	}
     }

@@ -18,37 +18,37 @@ namespace UI
                     startnew(TMX::GetMap);
                 }
 
-                if(description == "T")
+                if(text == "T")
                 {
                     startnew(TMX::GetTech);
                 }
 
-                if(description == "D")
+                if(text == "D")
                 {
                     startnew(TMX::GetDirt);
                 }
 
-                if(description == "R")
+                if(text == "R")
                 {
                     startnew(TMX::GetRPG);
                 }
 
-                if(description == "F")
+                if(text == "F")
                 {
                     startnew(TMX::GetFS);
                 }
 
-                if(description == "L")
+                if(text == "L")
                 {
                     startnew(TMX::GetLOL);
                 }
 
-                if(description == "P")
+                if(text == "P")
                 {
                     startnew(TMX::GetPlastic);
                 }
 
-                if(description == "I")
+                if(text == "I")
                 {
                     startnew(TMX::GetIce);
                 }
