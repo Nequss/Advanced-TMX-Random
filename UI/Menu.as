@@ -17,7 +17,6 @@ namespace UI
             if(UI::Button(Settings::expandedVisible ? arrowLeft : arrowRight, vec2(40,40)))
             {
                 Settings::expandedVisible = !Settings::expandedVisible;
-                //startnew(TMX::GetMap);
             }
             UI::PopStyleColor(3);
     

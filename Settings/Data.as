@@ -62,4 +62,9 @@ namespace Settings
 
     //window
     bool windowVisible = false;
+    vec2 windowPosition = vec2(0, 300);
+    int windowFlags =  UI::WindowFlags::NoTitleBar | UI::WindowFlags::NoCollapse | UI::WindowFlags::AlwaysAutoResize | UI::WindowFlags::NoDocking;
+
+    //expandedmenu
+    bool expandedVisible = false;
 }

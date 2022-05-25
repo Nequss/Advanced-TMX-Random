@@ -22,3 +22,8 @@ void RenderMenu()
 		Settings::windowVisible = !Settings::windowVisible;
 	}
 }
+
+void Render()
+{
+   UI::RenderUI();
+}

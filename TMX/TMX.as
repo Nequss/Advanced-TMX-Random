@@ -29,7 +29,6 @@ namespace TMX
     void GetMap()
     {
         string url = GenerateUrl();
-        print(url);
         auto request = GetResponse(url);
 
         while (!request.Finished())
