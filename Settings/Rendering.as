@@ -53,27 +53,13 @@ namespace Settings
         }
 
         UI::Separator();
-
-        if (UI::BeginCombo("Multi-laps", chosenLaps)){
-            for (uint i = 0; i < searchLaps.Length; i++) {
-                string laps = searchLaps[i];
-
-                if (UI::Selectable(laps, chosenLaps == laps)) {
-                    chosenLaps = laps;
-                }
-
-                if (chosenLaps == laps) {
-                    UI::SetItemDefaultFocus();
-                }
-            }
-            UI::EndCombo();
-        }
-
-        UI::Separator();
         novalued = UI::Checkbox("Include maps with no replay value", novalued);
 
         UI::Separator();
         awarded = UI::Checkbox("Include not awarded maps", awarded);
+
+        UI::Separator();
+        multilaps = UI::Checkbox("Include multilaps maps", multilaps);
     }
 
     [SettingsTab name="Tags Options"]
