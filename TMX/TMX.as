@@ -28,26 +28,85 @@ namespace TMX
 
     void GetMap()
     {
-        string url = GenerateUrl();
-        auto request = GetResponse(url);
-
-        while (!request.Finished())
-        {
-            yield();
-        }
-
-        auto response = Json::Parse(request.String());
-        Map@ map = Map(response);
-
+        int mapID;
         auto playground = GetApp().CurrentPlayground;
-      
+
         if (playground is null) 
         {
 	    	print("No chat found");
 	    	return;
 	    }
 
-	    playground.Interface.ChatEntry = "//tmx add " +  map._trackID;
+        bool found = false;
+
+        while(!found)
+        {
+            string url = GenerateUrl();
+            auto request = GetResponse(url);
+
+            while (!request.Finished())
+            {
+                yield();
+            }
+
+            auto response = Json::Parse(request.String());
+            Map@ map = Map(response);
+        
+            if(!Settings::novalued)
+            {
+                if(map._trackValue > 0)
+                {
+                    found = true;
+                }
+                else
+                {
+                    found = false;
+                    continue;
+                }
+            }
+            else
+            {
+                found = true;
+            }
+
+            if(!Settings::awarded)
+            {
+                if(map._awardCount > 0)
+                {
+                    found = true;
+                }
+                else
+                {
+                    found = false;
+                    continue;
+                }
+            }
+            else
+            {
+                found = true;
+            }
+
+            if(!Settings::multilaps)
+            {
+                if(map._laps > 1)
+                {
+                    found = true;
+                }
+                else
+                {
+                    found = false;
+                    continue;
+                }
+            }
+            else
+            {
+                found = true;
+            }
+
+            mapID = map._trackID;
+        }
+
+        playground.Interface.ChatEntry = "//tmx add " +  mapID;
     }
 
     string GenerateUrl()
