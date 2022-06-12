@@ -86,23 +86,6 @@ namespace TMX
                 found = true;
             }
 
-            if(!Settings::multilaps)
-            {
-                if(map._laps > 1)
-                {
-                    found = true;
-                }
-                else
-                {
-                    found = false;
-                    continue;
-                }
-            }
-            else
-            {
-                found = true;
-            }
-
             mapID = map._trackID;
         }
 
