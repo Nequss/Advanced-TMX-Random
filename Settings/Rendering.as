@@ -102,6 +102,7 @@ namespace Settings
         UI::SameLine();
         if(UI::Button("Search"))
         {
+            finished = false;
             TMX::SearchUsers();
         }
         UI::Separator();
@@ -112,15 +113,24 @@ namespace Settings
             {
                 if(UI::Button(TMX::users[i]._text))
                 {
-                    id = TMX::users[i]._id;
-                    users.Resize(0);
+                    authorid = TMX::users[i]._id;
+                    TMX::users.Resize(0);
+                    TMX::maps.Resize(0);
+                    
+                    startnew(TMX::GetUserMaps);
                 }
             }
         }
 
-        if(id != 0)
+        if(finished)
         {
-            
+            if(totalcount > 0)
+            {
+                for(int i = 0; i < TMX::maps.Length; i++)
+                {
+                    UI::TextWrapped(TMX::maps[i]._name);
+                }
+            }
         }
     }
 

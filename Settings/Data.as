@@ -70,5 +70,7 @@ namespace Settings
 
     //bulk add
     string author = "Nequsss";
-    int id = 0;
+    int authorid = 0;
+    int totalcount = 0;
+    bool finished = false;
 }

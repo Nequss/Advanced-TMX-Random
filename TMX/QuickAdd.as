@@ -11,7 +11,7 @@ namespace TMX
         }
 
         auto response = Json::Parse(request.String());
-        Map@ map = Map(response);
+        Map@ map = Map(response["results"][0]);
 
         auto playground = GetApp().CurrentPlayground;
       
@@ -35,7 +35,7 @@ namespace TMX
         }
 
         auto response = Json::Parse(request.String());
-        Map@ map = Map(response);
+        Map@ map = Map(response["results"][0]);
 
         auto playground = GetApp().CurrentPlayground;
       
@@ -59,7 +59,7 @@ namespace TMX
         }
 
         auto response = Json::Parse(request.String());
-        Map@ map = Map(response);
+        Map@ map = Map(response["results"][0]);
 
         auto playground = GetApp().CurrentPlayground;
       
@@ -83,7 +83,7 @@ namespace TMX
         }
 
         auto response = Json::Parse(request.String());
-        Map@ map = Map(response);
+        Map@ map = Map(response["results"][0]);
 
         auto playground = GetApp().CurrentPlayground;
       
@@ -107,7 +107,7 @@ namespace TMX
         }
 
         auto response = Json::Parse(request.String());
-        Map@ map = Map(response);
+        Map@ map = Map(response["results"][0]);
 
         auto playground = GetApp().CurrentPlayground;
       
@@ -131,7 +131,7 @@ namespace TMX
         }
 
         auto response = Json::Parse(request.String());
-        Map@ map = Map(response);
+        Map@ map = Map(response["results"][0]);
 
         auto playground = GetApp().CurrentPlayground;
       
@@ -155,7 +155,7 @@ namespace TMX
         }
 
         auto response = Json::Parse(request.String());
-        Map@ map = Map(response);
+        Map@ map = Map(response["results"][0]);
 
         auto playground = GetApp().CurrentPlayground;
       

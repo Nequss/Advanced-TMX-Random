@@ -16,10 +16,8 @@ namespace TMX
         int _trackValue;
         int _awardCount;
 
-        Map(Json::Value response)
-        {
-            Json::Value result = response["results"][0];  
-
+        Map(Json::Value result)
+        {  
             _trackID = result["TrackID"];
             _userID = result["UserID"];
             _username = result["Username"];
