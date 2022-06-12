@@ -57,15 +57,31 @@ namespace Settings
 
         UI::Separator();
         awarded = UI::Checkbox("Include not awarded maps", awarded);
-
-        UI::Separator();
-        multilaps = UI::Checkbox("Include multilaps maps", multilaps);
     }
 
     [SettingsTab name="Tags Options"]
     void TagsConfig()
     {
-        UI::TextWrapped("Selected tags will be added to map searching");
+        UI::TextWrapped("Selected tags will be added to map searching query");
+        UI::Separator();
+
+        if(UI::Button("Select All"))
+        {
+            for(int i = 0; i < chosenTags.Length; i++)
+            {
+                chosenTags[i] = true;
+            }
+        }
+
+        UI::SameLine();
+
+        if(UI::Button("Clear Selection"))
+        {
+            for(int i = 0; i < chosenTags.Length; i++)
+            {
+                chosenTags[i] = false;
+            }
+        }
         UI::Separator();
 
         for(int i = 0; i < chosenTags.Length; i++)
@@ -75,14 +91,41 @@ namespace Settings
         }
     }
 
-    [SettingsTab name="Plugin Options"]
-    void PluginConfig()
-    {
-        
-    }
-
     [SettingsTab name="Bulk Adding"]
     void BulkAdd()
+    {
+        UI::TextWrapped("Add multiple or all maps from the same author");
+        UI::TextWrapped("Search: (Author' MX username, ingame login or UserID)");
+        UI::Separator();
+
+        author =  UI::InputText("", author, UI::InputTextFlags::AutoSelectAll, null);
+        UI::SameLine();
+        if(UI::Button("Search"))
+        {
+            TMX::SearchUsers();
+        }
+        UI::Separator();
+
+        if(TMX::users.Length > 0)
+        {
+            for(int i = 0; i < TMX::users.Length; i++)
+            {
+                if(UI::Button(TMX::users[i]._text))
+                {
+                    id = TMX::users[i]._id;
+                    users.Resize(0);
+                }
+            }
+        }
+
+        if(id != 0)
+        {
+            
+        }
+    }
+
+    [SettingsTab name="Plugin Options"]
+    void PluginConfig()
     {
         
     }
@@ -97,8 +140,8 @@ namespace Settings
     {
         MapConfig();
         TagsConfig();
-        PluginConfig();
         BulkAdd();
+        PluginConfig();
         About();
     }
 }

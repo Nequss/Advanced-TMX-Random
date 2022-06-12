@@ -56,7 +56,6 @@ namespace Settings
     string chosenLaps = searchLaps[0];
     bool awarded = true;
     bool novalued = true;
-    bool multilaps = true;
 
     //tags
     array<bool> chosenTags(tags.Length);
@@ -68,4 +67,8 @@ namespace Settings
 
     //expandedmenu
     bool expandedVisible = false;
+
+    //bulk add
+    string author = "Nequsss";
+    int id = 0;
 }
