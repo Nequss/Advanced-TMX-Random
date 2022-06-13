@@ -1,6 +1,6 @@
 namespace Settings
 {
-    [SettingsTab name="Map Options"]
+    [SettingsTab name="Map Search Options"]
     void MapConfig()
     {
         if (UI::BeginCombo("Map length", chosenLength, UI::ComboFlags::HeightLarge)){
@@ -57,13 +57,9 @@ namespace Settings
 
         UI::Separator();
         awarded = UI::Checkbox("Include not awarded maps", awarded);
-    }
 
-    [SettingsTab name="Tags Options"]
-    void TagsConfig()
-    {
-        UI::TextWrapped("Selected tags will be added to map searching query");
         UI::Separator();
+        UI::TextWrapped("Selected tags will be added to map searching query");
 
         if(UI::Button("Select All"))
         {
@@ -87,14 +83,13 @@ namespace Settings
         for(int i = 0; i < chosenTags.Length; i++)
         {
             chosenTags[i] = UI::Checkbox(tags[i]._name, chosenTags[i]);
-            UI::Separator();
         }
     }
 
     [SettingsTab name="Bulk Adding"]
     void BulkAdd()
     {
-        UI::TextWrapped("Add multiple or all maps from the same author");
+        UI::TextWrapped("Add all maps from the same author");
         UI::TextWrapped("Search: (Author' MX username, ingame login or UserID)");
         UI::Separator();
 
@@ -103,9 +98,22 @@ namespace Settings
         if(UI::Button("Search"))
         {
             finished = false;
+            status = "";
+
             TMX::SearchUsers();
         }
-        UI::Separator();
+
+        if(finished)
+        {
+            if(totalcount > 0)
+            {
+                if(UI::Button("Add all " + totalcount + " maps"))
+                {
+                    startnew(TMX::AddAll);
+                }
+                UI::Separator();
+            }
+        }
 
         if(TMX::users.Length > 0)
         {
@@ -113,10 +121,11 @@ namespace Settings
             {
                 if(UI::Button(TMX::users[i]._text))
                 {
+                    status = "Loading maps...";
                     authorid = TMX::users[i]._id;
                     TMX::users.Resize(0);
                     TMX::maps.Resize(0);
-                    
+
                     startnew(TMX::GetUserMaps);
                 }
             }
@@ -128,16 +137,33 @@ namespace Settings
             {
                 for(int i = 0; i < TMX::maps.Length; i++)
                 {
-                    UI::TextWrapped(TMX::maps[i]._name);
+                    if(UI::Button("ID: " + TMX::maps[i]._trackID + " | " + TMX::maps[i]._name + " | Length: " + TMX::maps[i]._lengthName))
+                    {
+                        auto playground = GetApp().CurrentPlayground;
+      
+                        if (playground is null) 
+                        {
+	                    	print("No chat found");
+	                    	return;
+	                    }
+                
+	                    playground.Interface.ChatEntry = "//tmx add " +  TMX::maps[i]._trackID;
+                    }
                 }
             }
+        }
+        else
+        {
+            UI::TextWrapped(status);
         }
     }
 
     [SettingsTab name="Plugin Options"]
     void PluginConfig()
     {
-        
+        //to do:
+        //controller selection
+        //singleplayer mode
     }
 
     [SettingsTab name="About"]
@@ -149,7 +175,6 @@ namespace Settings
     void RenderSettings()
     {
         MapConfig();
-        TagsConfig();
         BulkAdd();
         PluginConfig();
         About();

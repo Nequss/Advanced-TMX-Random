@@ -73,4 +73,5 @@ namespace Settings
     int authorid = 0;
     int totalcount = 0;
     bool finished = false;
+    string status = "";
 }

@@ -81,7 +81,28 @@ namespace TMX
             }
         }  
 
-        print(maps.Length);
         Settings::finished = true; 
+    }
+
+    void AddAll()
+    {
+        Settings::finished = false;
+
+        auto playground = GetApp().CurrentPlayground;
+
+        for(int i = 0; i < maps.Length; i++)
+        {
+            print(maps.Length);
+
+            if (playground is null) 
+            {
+                Settings::status = "No chat found!";
+	        	print("No chat found");
+	        }
+
+	        playground.Interface.ChatEntry = "//tmx add " +  TMX::maps[i]._trackID;
+            sleep(250);
+            Settings::status = "Added " + (i + 1) + " out of " + Settings::totalcount + " maps";
+        }
     }
 }
