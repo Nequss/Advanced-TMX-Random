@@ -29,14 +29,6 @@ namespace TMX
     void GetMap()
     {
         int mapID;
-        auto playground = GetApp().CurrentPlayground;
-
-        if (playground is null) 
-        {
-	    	print("No chat found");
-	    	return;
-	    }
-
         bool found = false;
 
         while(!found)
@@ -88,8 +80,31 @@ namespace TMX
 
             mapID = map._trackID;
         }
+        
+        if(Settings::chosenController == "Alone")
+        {
+            CTrackMania@ app = cast<CTrackMania>(GetApp());
+            app.BackToMainMenu(); 
 
-        playground.Interface.ChatEntry = "//tmx add " +  mapID;
+            while(!app.ManiaTitleControlScriptAPI.IsReady)
+            {
+                yield(); 
+            }
+
+            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + mapID, "", "");
+        }
+        else
+        {
+            auto playground = GetApp().CurrentPlayground;
+
+            if (playground is null) 
+            {
+	        	print("No chat found");
+	        	return;
+	        }
+
+            playground.Interface.ChatEntry = Settings::addCommand +  mapID;
+        }
     }
 
     string GenerateUrl()

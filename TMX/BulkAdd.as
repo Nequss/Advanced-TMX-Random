@@ -100,7 +100,7 @@ namespace TMX
 	        	print("No chat found");
 	        }
 
-	        playground.Interface.ChatEntry = "//tmx add " +  TMX::maps[i]._trackID;
+	        playground.Interface.ChatEntry = Settings::addCommand + TMX::maps[i]._trackID;
             sleep(250);
             Settings::status = "Added " + (i + 1) + " out of " + Settings::totalcount + " maps";
         }

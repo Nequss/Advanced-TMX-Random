@@ -74,4 +74,14 @@ namespace Settings
     int totalcount = 0;
     bool finished = false;
     string status = "";
+
+    //pluginconfig
+    const array<string> controllers =
+    {
+        "Alone",
+        "Evo",
+        "PyPlanet"
+    };
+    string chosenController = "Alone";
+    string addCommand = "";
 }

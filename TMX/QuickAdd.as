@@ -21,7 +21,7 @@ namespace TMX
 	    	return;
 	    }
 
-	    playground.Interface.ChatEntry = "//tmx add " +  map._trackID;
+        playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
     }
 
     void GetDirt()
@@ -45,7 +45,7 @@ namespace TMX
 	    	return;
 	    }
 
-	    playground.Interface.ChatEntry = "//tmx add " +  map._trackID;
+        playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
     }
 
     void GetRPG()
@@ -69,7 +69,7 @@ namespace TMX
 	    	return;
 	    }
 
-	    playground.Interface.ChatEntry = "//tmx add " +  map._trackID;
+        playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
     }
 
     void GetFS()
@@ -93,7 +93,7 @@ namespace TMX
 	    	return;
 	    }
 
-	    playground.Interface.ChatEntry = "//tmx add " +  map._trackID;
+        playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
     }
 
     void GetLOL()
@@ -117,7 +117,7 @@ namespace TMX
 	    	return;
 	    }
 
-	    playground.Interface.ChatEntry = "//tmx add " +  map._trackID;
+        playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
     }
 
     void GetPlastic()
@@ -141,7 +141,7 @@ namespace TMX
 	    	return;
 	    }
 
-	    playground.Interface.ChatEntry = "//tmx add " +  map._trackID;
+        playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
     }
 
     void GetIce()
@@ -165,6 +165,6 @@ namespace TMX
 	    	return;
 	    }
 
-	    playground.Interface.ChatEntry = "//tmx add " +  map._trackID;
+        playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
     }
 }
