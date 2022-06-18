@@ -3,14 +3,13 @@ namespace UI
     void RenderOption(string text, string description, vec2 position, vec4 color)
     {
             UI::SetNextWindowPos(int(position.x), int(position.y));
-            UI::PushStyleColor(UI::Col::WindowBg , vec4(0,0,0,0));
+            UI::PushStyleColor(UI::Col::WindowBg, vec4(0,0,0,0));
             UI::Begin(text, Settings::windowFlags);
     
             UI::PushStyleColor(UI::Col::Button, vec4(0,0,0,0.8));
-            UI::PushStyleColor(UI::Col::ButtonHovered , color);
-            UI::PushStyleColor(UI::Col::ButtonActive  , color);
+            UI::PushStyleColor(UI::Col::ButtonHovered, color);
+            UI::PushStyleColor(UI::Col::ButtonActive, color);
 
-            //kek
             if(UI::Button("\\$fff" + text, vec2(40,40)))
             {
                 if(description == "Advanced Search")

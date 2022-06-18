@@ -3,6 +3,28 @@ namespace Settings
     [SettingsTab name="Map Search Options"]
     void MapConfig()
     {
+        if(chosenController == "Alone")
+        {
+            if(UI::Button("Search&Play"))
+            {
+                startnew(TMX::GetMap);
+            }
+            UI::SameLine();
+            UI::TextWrapped("Uses settings below for a search query");
+            UI::Separator();
+        }
+        else
+        {
+            if(UI::Button("Search&Add"))
+            {
+                startnew(TMX::GetMap);
+            }
+
+            UI::SameLine();
+            UI::TextWrapped("Uses settings below for a search query");
+            UI::Separator();
+        }
+
         if (UI::BeginCombo("Map length", chosenLength, UI::ComboFlags::HeightLarge))
         {
             for (uint i = 0; i < searchLengths.Length; i++) 
@@ -111,14 +133,15 @@ namespace Settings
         {
             if(Settings::chosenController == "Alone")
             {
-                status = "Bulk Adding not avaiable in Alone mode";
+                status = "Bulk Adding not available in Alone Mode";
             }
             else
             {          
                 finished = false;
                 status = "";
 
-                TMX::SearchUsers();}
+                TMX::SearchUsers();
+            }
         }
 
         if(finished)

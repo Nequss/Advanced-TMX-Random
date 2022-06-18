@@ -1,6 +1,5 @@
 namespace TMX
 {
-    //todo - bulk add no avaiable in alone mode
     array<User@> users;
     array<Map@> maps;
 

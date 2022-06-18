@@ -1,6 +1,5 @@
 namespace TMX
 {
-    //todo refactoring
     void GetTech()
     {
         string url = "https://trackmania.exchange/mapsearch2/search?api=on&tags=3&random=1";
@@ -13,31 +12,7 @@ namespace TMX
 
         auto response = Json::Parse(request.String());
         Map@ map = Map(response["results"][0]);
-
-        if(Settings::chosenController == "Alone")
-        {
-            CTrackMania@ app = cast<CTrackMania>(GetApp());
-            app.BackToMainMenu(); 
-
-            while(!app.ManiaTitleControlScriptAPI.IsReady)
-            {
-                yield(); 
-            }
-
-            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + map._trackID, "", "");
-        }
-        else
-        {
-            auto playground = GetApp().CurrentPlayground;
-
-            if (playground is null) 
-            {
-	        	print("No chat found");
-	        	return;
-	        }
-
-            playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
-        }
+        PlayMap(map._trackID);
     }
 
     void GetDirt()
@@ -52,31 +27,7 @@ namespace TMX
 
         auto response = Json::Parse(request.String());
         Map@ map = Map(response["results"][0]);
-
-        if(Settings::chosenController == "Alone")
-        {
-            CTrackMania@ app = cast<CTrackMania>(GetApp());
-            app.BackToMainMenu(); 
-
-            while(!app.ManiaTitleControlScriptAPI.IsReady)
-            {
-                yield(); 
-            }
-
-            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + map._trackID, "", "");
-        }
-        else
-        {
-            auto playground = GetApp().CurrentPlayground;
-
-            if (playground is null) 
-            {
-	        	print("No chat found");
-	        	return;
-	        }
-
-            playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
-        }
+        PlayMap(map._trackID);
     }
 
     void GetRPG()
@@ -91,31 +42,7 @@ namespace TMX
 
         auto response = Json::Parse(request.String());
         Map@ map = Map(response["results"][0]);
-
-        if(Settings::chosenController == "Alone")
-        {
-            CTrackMania@ app = cast<CTrackMania>(GetApp());
-            app.BackToMainMenu(); 
-
-            while(!app.ManiaTitleControlScriptAPI.IsReady)
-            {
-                yield(); 
-            }
-
-            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + map._trackID, "", "");
-        }
-        else
-        {
-            auto playground = GetApp().CurrentPlayground;
-
-            if (playground is null) 
-            {
-	        	print("No chat found");
-	        	return;
-	        }
-
-            playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
-        }
+        PlayMap(map._trackID);
     }
 
     void GetFS()
@@ -130,31 +57,7 @@ namespace TMX
 
         auto response = Json::Parse(request.String());
         Map@ map = Map(response["results"][0]);
-
-        if(Settings::chosenController == "Alone")
-        {
-            CTrackMania@ app = cast<CTrackMania>(GetApp());
-            app.BackToMainMenu(); 
-
-            while(!app.ManiaTitleControlScriptAPI.IsReady)
-            {
-                yield(); 
-            }
-
-            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + map._trackID, "", "");
-        }
-        else
-        {
-            auto playground = GetApp().CurrentPlayground;
-
-            if (playground is null) 
-            {
-	        	print("No chat found");
-	        	return;
-	        }
-
-            playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
-        }
+        PlayMap(map._trackID);
     }
 
     void GetLOL()
@@ -169,31 +72,7 @@ namespace TMX
 
         auto response = Json::Parse(request.String());
         Map@ map = Map(response["results"][0]);
-
-        if(Settings::chosenController == "Alone")
-        {
-            CTrackMania@ app = cast<CTrackMania>(GetApp());
-            app.BackToMainMenu(); 
-
-            while(!app.ManiaTitleControlScriptAPI.IsReady)
-            {
-                yield(); 
-            }
-
-            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + map._trackID, "", "");
-        }
-        else
-        {
-            auto playground = GetApp().CurrentPlayground;
-
-            if (playground is null) 
-            {
-	        	print("No chat found");
-	        	return;
-	        }
-
-            playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
-        }
+        PlayMap(map._trackID);
     }
 
     void GetPlastic()
@@ -208,31 +87,7 @@ namespace TMX
 
         auto response = Json::Parse(request.String());
         Map@ map = Map(response["results"][0]);
-
-        if(Settings::chosenController == "Alone")
-        {
-            CTrackMania@ app = cast<CTrackMania>(GetApp());
-            app.BackToMainMenu(); 
-
-            while(!app.ManiaTitleControlScriptAPI.IsReady)
-            {
-                yield(); 
-            }
-
-            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + map._trackID, "", "");
-        }
-        else
-        {
-            auto playground = GetApp().CurrentPlayground;
-
-            if (playground is null) 
-            {
-	        	print("No chat found");
-	        	return;
-	        }
-
-            playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
-        }
+        PlayMap(map._trackID);
     }
 
     void GetIce()
@@ -247,7 +102,11 @@ namespace TMX
 
         auto response = Json::Parse(request.String());
         Map@ map = Map(response["results"][0]);
+        PlayMap(map._trackID);
+    }
 
+    void PlayMap(int id)
+    {
         if(Settings::chosenController == "Alone")
         {
             CTrackMania@ app = cast<CTrackMania>(GetApp());
@@ -258,7 +117,7 @@ namespace TMX
                 yield(); 
             }
 
-            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + map._trackID, "", "");
+            app.ManiaTitleControlScriptAPI.PlayMap("https://trackmania.exchange/maps/download/" + id, "", "");
         }
         else
         {
@@ -270,7 +129,7 @@ namespace TMX
 	        	return;
 	        }
 
-            playground.Interface.ChatEntry = Settings::addCommand +  map._trackID;
+            playground.Interface.ChatEntry = Settings::addCommand + id;
         }
     }
 }
