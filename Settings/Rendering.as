@@ -109,10 +109,16 @@ namespace Settings
         UI::SameLine();
         if(UI::Button("Search"))
         {
-            finished = false;
-            status = "";
+            if(Settings::chosenController == "Alone")
+            {
+                status = "Bulk Adding not avaiable in Alone mode";
+            }
+            else
+            {          
+                finished = false;
+                status = "";
 
-            TMX::SearchUsers();
+                TMX::SearchUsers();}
         }
 
         if(finished)
