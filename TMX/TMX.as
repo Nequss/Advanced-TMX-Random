@@ -14,11 +14,17 @@ namespace TMX
     array<Tag@> GetTags()
     {
         auto request = GetResponse("https://trackmania.exchange/api/tags/gettags");
+        
+        // Wait for the request to finish
+        while(!request.Finished()) {
+            yield();
+        }
+        
         auto response = Json::Parse(request.String());
 
         array<Tag@> tags;
 
-        for(int i = 0; i < response.get_Length(); i++)
+        for(int i = 0; i < response.Length; i++)
         {
             tags.InsertLast(Tag(response[i]));
         }

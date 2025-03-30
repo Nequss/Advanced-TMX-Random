@@ -1,7 +1,7 @@
 class CachedImage
 {
     string url;
-    Resources::Texture@ texture;
+    UI::Texture@ texture;
 
     void DownloadFromURLAsync()
     {
