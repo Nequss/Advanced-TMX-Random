@@ -1,6 +1,7 @@
 namespace Settings
 {
-    array<TMX::Tag@> tags = TMX::GetTags();
+    // Changed to empty array, will be populated in Main.as
+    array<TMX::Tag@> tags;
 
     const array<string> searchLengths = 
     {
@@ -58,7 +59,7 @@ namespace Settings
     bool novalued = true;
 
     //tags
-    array<bool> chosenTags(tags.Length);
+    array<bool> chosenTags;
 
     //window
     bool windowVisible = false;

@@ -11,9 +11,9 @@ namespace TMX
         auto request = GetResponse(url);
         auto response = Json::Parse(request.String());
         
-        if(response.get_Length() > 0)
+        if(response.Length > 0)
         {
-            for(int i = 0; i < response.get_Length(); i++)
+            for(int i = 0; i < response.Length; i++)
             {
                 users.InsertLast(User(response[i]));
             }
